@@ -26,21 +26,29 @@ class Card:
 
 #create a deck class
 
-class Card:
-    
-    def __init__(self,suit,rank):
-        
-        self.suit = suit
-        self.rank = rank
-        
-    
-    
+class Deck:
+
+    def __init__(self):
+        self.deck = []
+        for suit in ranks:
+            for rank in ranks:
+                self.deck.append(Card(suit,rank))
+
     def __str__(self):
-        return self.rank + ' of ' + self.suit
+        view_deck = ' '
+        for card in self.deck:
+            view_deck += '\n' + card.__str__()
+        return 'The deck contains: ' + view_deck
+
+    def shuffle(self):
+        random.shuffle(self.deck)
+
+    def deal(self):
+        return self.deck.pop()
 
  #create a hand class
 
- class Hand:
+class Hand:
     def __init__(self):
         self.cards = []  # start with an empty list as we did in the Deck class
         self.value = 0   # start with zero value
@@ -153,7 +161,7 @@ def push(player,dealer):
 
 #Game code
 
-While True:
+while True:
     # Print an opening statement
     print('Welcome to Black Jack !')
 
