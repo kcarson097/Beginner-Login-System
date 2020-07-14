@@ -204,9 +204,4 @@ new_account = Button(root, text="Create new account",relief = 'flat', font= "Ver
 new_account.grid(row = 3, column = 0, columnspan = 5 , ipadx = 15)
 
 
-
-
-
-
-
 root.mainloop()
