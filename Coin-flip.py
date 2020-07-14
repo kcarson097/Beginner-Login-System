@@ -20,3 +20,9 @@ def coin_flip(n):
         
     print('Tails count : ' +  str(tails))
     print('Heads count : ' +  str(heads))
+
+flips = int(input('ENTER how many times you want to flip'))
+coin_flip(flips)
+
+#to prevent window closing
+user = input('Thanks for playing')
