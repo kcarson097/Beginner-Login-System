@@ -14,7 +14,7 @@ def calc_tax(cost,tax):
     
     print('Thank you ! See below your calculated tax. Have a nice day :)')
     print('\n')
-    print('Amount of tax (%) : {}'.format(taxed_amount))
+    print('Amount of tax (£) : {}'.format(taxed_amount))
     print('Total cost (£) with VAT:{}'.format(total_cost))
 
 
