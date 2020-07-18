@@ -40,7 +40,7 @@ def check():
     First_Seats = 0
         
         
-    #check if selected seats available
+    #check if selected seats available - note var is the output of the dropdown menu with the class choices in the booking_window
     if var.get() == 'Economy (50 pounds sterling)':
         
         if Economy_Seats > 0:
@@ -79,15 +79,13 @@ def create():
         #store these detials on database
         connection = sqlite3.connect('booking_info1.db')
         c= connection.cursor()
-        
-        answer = str(var.get())
-        print(answer)
-       
+     
         values = (f_name.get(), l_name.get(), passport.get(), email.get(), var.get())
         c.execute("INSERT INTO bookings10 VALUES (?,?,?,?,?)", values)
        
         connection.commit()
         
+        #select details from database and create a booking summary for customer which can then be emailed to them
         c.execute('SELECT *, oid from bookings10')
         records = c.fetchall()
         for record in records:
@@ -107,35 +105,13 @@ def create():
                 
         connection.commit()
         connection.close()
-        
-        send_email(booking_info)
-        
-        
+       
         messagebox.showinfo('Booking Sucess','Booking successful ,your bookingID is ' + str(booking_id) + 
-                            ' a confirmation email has been sent to '+ email.get())
+                            ' a confirmation email will be sent to '+ email.get())
 
        
         #send email to client
-        try:
-            smtp_object = smtplib.SMTP('smtp.gmail.com',587)
-            smtp_object.ehlo()
-            smtp_object.starttls()
-
-            email_database = 'me564123@gmail.com'
-            password = 'rdeejnyyilimbsmv'
-            smtp_object.login(email_database,password)
-            print('login success')
-
-            from_address = email_database
-            to_address = email.get()
-
-            subject = 'Booking Confirmation'
-            message = booking_info
-            msg =  message
-            smtp_object.sendmail(from_address, to_address, msg)
-            print('Email Successfully Sent')
-        except:
-            messagebox.showerror('Email Error', 'Failed to send email')
+        send_email(booking_info)
         
         #clear entry fields for new booking
         f_name.delete(0, END)
@@ -168,8 +144,8 @@ def send_email(content):
         except:
             messagebox.showerror('Email Error', 'Failed to send email')
 
+#this will produce a summary of a booking using the provided booking number from customer
 def view():
-    global view
     view = Tk()
     view.title('View bookings')
     view.geometry('350x150')
@@ -203,7 +179,7 @@ def view():
     
 
 
-#create a booking window
+#create the main booking booking window
 booking_window = Tk()
 booking_window.geometry('380x260')
 booking_window.title('New Booking')
