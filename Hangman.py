@@ -12,8 +12,6 @@ def generate_random_word():
     except:
         print('ERROR finding word')
 
-
-                
 def show_man(tries):
     hang_man = [
     #starting position    
