@@ -102,11 +102,7 @@ GAME OVER, COMPUTER WINS !
     ]
     
     print(hang_man[tries])
-    
-def play_again():
-    again = input('WOULD YOU LIKE TO PLAY AGAIN y/n ?')
-    return again
-
+   
 def play(word):
 
     #generate the random word to guess by user into a list
