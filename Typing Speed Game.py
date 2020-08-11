@@ -3,6 +3,9 @@ import tkinter
 import bs4
 import requests
 
+#this will generate a random sentence for the user to type
+#the time taken to type the sentence will be recorded and the wpm, accuracy and cps will be calculated and displayed to the user
+
 root = Tk()
 root.title("Typing Speed Tester")
 root.geometry("730x450")
