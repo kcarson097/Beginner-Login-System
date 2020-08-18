@@ -1,5 +1,5 @@
 import time
-import tkinter
+from tkinter import *
 import bs4
 import requests
 
