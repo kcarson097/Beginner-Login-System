@@ -95,20 +95,23 @@ class Game():
         #calculate accuracy
         self.count = 0;
         for char in self.enteredText:
+            #the reason it is 1:-1 and not :: is because the first and last characters of the sentence are quotation marks - this is not needed for user to enter
             if char in self.sentence[1:-1]:
                 self.count += 1
         
         #len(sentence) -2 this is to discount for the quotation marks
-        self.accuracy = "{:.2f}".format(self.count/(len(self.sentence)-2)*100)
-        
-        self.accuracyLabel = Label(root, text =  "Accuracy =  " + self.accuracy + " % " , 
+        if self.count > len(self.sentence)-2:
+            self.accuracyLabel = Label(root, text =  "Character limit exceeded, cannot calculate accuracy " , 
                                                        bg = "blue",fg = "red", font = ("Helvetica", 15))
-        self.accuracyLabel.grid(row = 7, column = 0, columnspan = 2, padx = 5, pady = 5)
+            self.accuracyLabel.grid(row = 7, column = 0, columnspan = 2, padx = 5, pady = 5)
+        else:
+            self.accuracy = "{:.2f}".format(self.count/(len(self.sentence)-2)*100)
+
+            self.accuracyLabel = Label(root, text =  "Accuracy =  " + self.accuracy + " % " , 
+                                                           bg = "blue",fg = "red", font = ("Helvetica", 15))
+            self.accuracyLabel.grid(row = 7, column = 0, columnspan = 2, padx = 5, pady = 5)
            
 
-        
-
-        
 test = Game(root)        
 
 root.mainloop()
