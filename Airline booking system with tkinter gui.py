@@ -4,7 +4,7 @@
 #store booking details in a database
 #generate a booking ID for the customer from which they can query their booking
 #once booking completed - send an email of the booking details to customer 
-#in future better to repeat project using classes !!
+
 
 from tkinter import *
 import sqlite3
